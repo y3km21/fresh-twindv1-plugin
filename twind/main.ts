@@ -1,3 +1,6 @@
+// Original Code
+// https://github.com/denoland/fresh/blob/main/plugins/twind/main.ts
+//
 import { cssom } from "twind";
 import { STYLE_ELEMENT_ID, setup, Options } from "./shared.ts";
 

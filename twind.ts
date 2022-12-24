@@ -1,3 +1,6 @@
+// Original Code
+// https://github.com/denoland/fresh/blob/main/plugins/twind.ts
+//
 import { Plugin } from "$fresh/server.ts";
 import { STYLE_ELEMENT_ID, Options, setup } from "./twind/shared.ts";
 import { virtual } from "twind";

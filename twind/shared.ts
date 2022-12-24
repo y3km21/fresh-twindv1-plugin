@@ -1,3 +1,6 @@
+// Original Code
+// https://github.com/denoland/fresh/blob/main/plugins/twind/shared.ts
+//
 import { JSX, options as preactOptions, VNode } from "preact";
 import { TwindConfig, setup as twSetup, Sheet, tw } from "twind";
 
