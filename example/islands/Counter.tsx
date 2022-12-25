@@ -6,15 +6,21 @@ interface CounterProps {
 }
 
 // flex-grow-1はTwindv0.16で変換されるがTwindv1で変換されないので
-// flex-growに書き直している。
-// https://v2.tailwindcss.com/docs/flex-grow
-// v3なら grow
+// growに書き直している。
 // https://tailwindcss.com/docs/flex-grow
 export default function Counter(props: CounterProps) {
   const [count, setCount] = useState(props.start);
   return (
     <div class="flex gap-2 w-full">
-      <p class="grow font-bold text-xl">{count}</p>
+      <p
+        class={(() => {
+          let str = count % 2 == 0;
+
+          return `grow text-xl ${str ? "text-lime-600" : "text-orange-600"}`;
+        })()}
+      >
+        {count}
+      </p>
       <Button onClick={() => setCount(count - 1)}>-1</Button>
       <Button onClick={() => setCount(count + 1)}>+1</Button>
     </div>
