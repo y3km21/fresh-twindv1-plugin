@@ -1,15 +1,11 @@
 # fresh Twind(v1) Plugin
 
----
-
 fresh Twind(v1) Plugin は[Twind(v1)](https://github.com/tw-in-js/twind)を[fresh](https://github.com/denoland/fresh)で使用できるようにするプラグインです。
 
 現在、fresh には [Twind(v0.16)](https://github.com/tw-in-js/twind/tree/v0.16)を使用するための 公式プラグインが存在しますが Twind(v1)には対応していません。
 このプラグインを公式の Twind プラグインの代わりに使用することで Twind(v1)を fresh で使用することができます。
 
 ## Usage
-
----
 
 はじめに fresh の 新しいプロジェクトを作成しましょう。
 [詳細は fresh の公式リポジトリを見てください](https://github.com/denoland/fresh)
