@@ -8,21 +8,20 @@ type State = string[];
 
 /**
  * hydrate
- * @param options
- * @param state
+ * @param options TwindConfig extended with selfURL.
+ * @param state Virtual Cssrules
  */
 export function hydrate(options: Options, state: State) {
   const el = document.getElementById(STYLE_ELEMENT_ID) as HTMLStyleElement;
   const target = el.sheet!;
-
   const virtualCssSheetSet = new Set(state);
 
   const cssom_sheet = cssom(target);
   cssom_sheet.insert = (cssText, index) => {
     // https://github.com/tw-in-js/twind/blob/main/packages/core/src/sheets.ts#L61
-    // Virtual側でセットアップされたCssruleと重複するCssruleをstateを使用してフィルターする。
     try {
       // Insert
+      // Virtual側でセットアップされたCssruleと重複するzCssruleをstateを使用してフィルターする。
       if (!virtualCssSheetSet.has(cssText)) {
         target.insertRule(cssText, target.cssRules.length);
       }

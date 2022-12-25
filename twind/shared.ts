@@ -24,8 +24,8 @@ declare module "preact" {
 }
 
 /**
- * twind setup
- * @param options
+ * twind setup and vnode class update by tw.
+ * @param options TwindConfig extended with selfURL.
  * @param sheet
  */
 export function setup(options: Options, sheet: Sheet) {

@@ -6,6 +6,11 @@ import { STYLE_ELEMENT_ID, Options, setup } from "./twind/shared.ts";
 import { virtual } from "twind";
 export type { Options };
 
+/**
+ * TwindPlugin
+ * @param options TwindConfig extended with selfURL.
+ * @returns
+ */
 export default function twind(options: Options): Plugin {
   const virtual_sheet = virtual();
 
@@ -20,18 +25,14 @@ export default function(state) { hydrate(options, state);}`;
     name: "twind",
     entrypoints: { main: main },
     render(ctx) {
-      const res = ctx.render();
+      const _res = ctx.render();
       const cssTexts = [...virtual_sheet.target];
 
-      let cssText = "";
-      if (res.requiresHydration) {
-        // No precedence
-        cssText = cssTexts.join("\n");
-      }
+      // No precedence
+      const cssText = cssTexts.join("\n");
 
       const scripts = [];
       scripts.push({ entrypoint: "main", state: cssTexts });
-
       const ret = {
         scripts,
         styles: [{ cssText: cssText, id: STYLE_ELEMENT_ID }],
