@@ -2,27 +2,28 @@
 
 ---
 
-fresh Twind(v1) Plugin は[Twind(v1)](https://github.com/tw-in-js/twind)を[fresh](https://github.com/denoland/fresh)で使用できるようにするプラグインです。
+fresh Twind(v1) Plugin is a thirdparty plugin that allows [Twind(v1)](https://github.com/tw-in-js/twind) to be used with [fresh](https://github.com/denoland/fresh).
 
-現在、fresh には [Twind(v0.16)](https://github.com/tw-in-js/twind/tree/v0.16)を使用するための 公式プラグインが存在しますが Twind(v1)には対応していません。
-このプラグインを公式の Twind プラグインの代わりに使用することで Twind(v1)を fresh で使用することができます。
+Currently(2022/12/26), there is [an official fresh twind plugin](https://github.com/denoland/fresh/tree/main/plugins) using [Twind(v0.16)](https://github.com/tw-in-js/twind/tree/v0.16), but Twind(v1) is not supported.
+
+This plugin can be used in place of the official Twind plugin to use Twind(v1) with fresh.
 
 ## Usage
 
 ---
 
-はじめに fresh の 新しいプロジェクトを作成しましょう。
-[詳細は fresh の公式リポジトリを見てください](https://github.com/denoland/fresh)
+First, create a new fresh project.
+[See the official fresh repository for details](https://github.com/denoland/fresh)
 
 ```sh
 deno run -A -r https://fresh.deno.dev deno-fresh-demo
 ```
 
-では作成した Project の設定ファイルをいくつか変更します。
+Now let's make a few changes to the Project configuration file.
 
 ### import_map.json
 
-Twind(v1)、最低限の Twind プリセット（さらにプリセットが必要ならば[ここ](https://twind.style/presets)を参照してください。）、この fresh プラグインをインポートします。
+You need to import Twind(v1), a minimal Twind preset (if you need more presets, see [here](https://twind.style/presets)) and this fresh plugin.
 
 ```json
 {
@@ -44,8 +45,8 @@ Twind(v1)、最低限の Twind プリセット（さらにプリセットが必�
 
 ### twind.config.ts
 
-`Options`のインポートパスを`twind_fresh_plugin/twind.ts`に変更します。
-そして使用する Twind のプリセットをインポートして `Options` の`presets`フィールドに array で追加します。
+Change `Options` to import from `twind_fresh_plugin/twind.ts`.
+Import the Twind preset and add it to the `presets` field of the `Options` with an array.
 
 ```ts
 import { Options } from "twind_fresh_plugin/twind.ts";
@@ -62,7 +63,7 @@ export default {
 
 ### main.ts
 
-`twindPlugin`のインポートパスを `twind_fresh_plugin/twind.ts`に変更します。
+Change `twindPlugin` to import from `twind_fresh_plugin/twind.ts`
 
 ```ts
 /// <reference no-default-lib="true" />
@@ -80,13 +81,12 @@ import twindConfig from "./twind.config.ts";
 await start(manifest, { plugins: [twindPlugin(twindConfig)] });
 ```
 
-以上です！
-
-これで Twind(v1）を fresh で使用することができます！
+That's all!
+Now you can use Twind(v1) in fresh!
 
 ## Example
 
-`example` に設定を変更した fresh デモがあります。
+There is a fresh demo in `example`.
 
 ```sh
 git clone "https://github.com/y3km21/fresh_twind-v1_plugin"
