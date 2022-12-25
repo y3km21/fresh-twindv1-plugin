@@ -2,14 +2,14 @@
 // https://github.com/denoland/fresh/blob/main/plugins/twind/shared.ts
 //
 import { JSX, options as preactOptions, VNode } from "preact";
-import { TwindConfig, setup as twSetup, Sheet, tw } from "twind";
+import { setup as twSetup, Sheet, tw, TwindUserConfig } from "twind";
 
 export const STYLE_ELEMENT_ID = "__FRSH_TWIND";
 
 /**
  * TwindConfig extended with selfURL.
  */
-export interface Options extends TwindConfig {
+export interface Options extends TwindUserConfig {
   /** The import.meta.url of the module defining these options. */
   selfURL: string;
 }

@@ -7,4 +7,4 @@ import presetTailWind from "twind-preset-tailwind";
 export default {
   presets: [presetAutoPrefix, presetTailWind],
   selfURL: import.meta.url,
-} as unknown as Options;
+} as Options;
