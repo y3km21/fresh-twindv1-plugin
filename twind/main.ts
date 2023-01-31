@@ -21,7 +21,8 @@ export function hydrate(options: Options, state: State) {
     // https://github.com/tw-in-js/twind/blob/main/packages/core/src/sheets.ts#L61
     try {
       // Insert
-      // Virtual側でセットアップされたCssruleと重複するzCssruleをstateを使用してフィルターする。
+      // Filter cssrule set by virtual.
+      // Add only the cssrule that first appears in island.
       if (!virtualCssSheetSet.has(cssText)) {
         target.insertRule(cssText, target.cssRules.length);
       }
