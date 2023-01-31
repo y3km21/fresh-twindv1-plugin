@@ -1,4 +1,4 @@
 {
   "tasks": {},
-  "importMap": "./import_map.jsonc"
+  "importMap": "./import_map.json"
 }
