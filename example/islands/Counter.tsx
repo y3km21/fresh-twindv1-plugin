@@ -17,7 +17,9 @@ export default function Counter(props: CounterProps) {
         class={(() => {
           const m = count % 2 == 0;
 
-          return `grow text-xl ${m ? "text-lime-600" : "text-orange-600"}`;
+          return `grow text-xl ${
+            m ? "text-lime-600 font-bold" : "text-orange-600"
+          }`;
         })()}
       >
         {count}
