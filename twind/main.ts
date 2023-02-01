@@ -7,13 +7,16 @@ import { STYLE_ELEMENT_ID, setup, Options } from "./shared.ts";
 type State = string[];
 
 /**
- * hydrate
- * @param options TwindConfig extended with selfURL.
- * @param state Virtual Cssrules
+ * Setup a twind dynamically inserted in Islands.
+ * @param options - TwindUserConfig extended with selfURL.
+ * @param state - Virtual Cssrules for filtering duplicates.
  */
 export function hydrate(options: Options, state: State) {
   const el = document.getElementById(STYLE_ELEMENT_ID) as HTMLStyleElement;
   const target = el.sheet!;
+
+  // What is the point of using 'state'
+  // since 'target' already has the same content as virtualsheet?
   const virtualCssSheetSet = new Set(state);
 
   const cssom_sheet = cssom(target);
