@@ -1,7 +1,7 @@
 // Original Code
 // https://github.com/denoland/fresh/blob/main/plugins/twind/main.ts
 //
-import { cssom } from "twind";
+import { cssom, stringify } from "twind";
 import { STYLE_ELEMENT_ID, setup, Options } from "./shared.ts";
 
 type State = string[];
@@ -9,15 +9,12 @@ type State = string[];
 /**
  * Setup a twind dynamically inserted in Islands.
  * @param options - TwindUserConfig extended with selfURL.
- * @param state - Virtual Cssrules for filtering duplicates.
  */
-export function hydrate(options: Options, state: State) {
+export function hydrate(options: Options) {
   const el = document.getElementById(STYLE_ELEMENT_ID) as HTMLStyleElement;
   const target = el.sheet!;
 
-  // What is the point of using 'state'
-  // since 'target' already has the same content as virtualsheet?
-  const virtualCssSheetSet = new Set(state);
+  const virtualCssSheetSet = new Set(stringify(target).split("\n"));
 
   const cssom_sheet = cssom(target);
   cssom_sheet.insert = (cssText, index) => {

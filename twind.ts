@@ -21,7 +21,7 @@ export default function twind(options: Options): Plugin {
     new URL("./twind/main.ts", import.meta.url).href
   }";
   import options from "${options.selfURL}";
-  export default function(state) { hydrate(options, state);}`;
+  export default function(state) { hydrate(options);}`;
 
   return {
     name: "twind",
@@ -34,7 +34,9 @@ export default function twind(options: Options): Plugin {
       const scripts = [];
 
       if (res.requiresHydration) {
-        scripts.push({ entrypoint: "main", state: cssTexts });
+        // The filtering of cssrules in hydrate has been simplified to be done internally,
+        // so it is no longer necessary to pass virtual cssrules using 'state'.
+        scripts.push({ entrypoint: "main", state: "" });
       }
 
       const ret = {
