@@ -7,7 +7,7 @@ import { setup as twSetup, Sheet, tw, TwindUserConfig } from "twind";
 export const STYLE_ELEMENT_ID = "__FRSH_TWIND";
 
 /**
- * TwindConfig extended with selfURL.
+ * TwindUserConfig extended with selfURL.
  */
 export interface Options extends TwindUserConfig {
   /** The import.meta.url of the module defining these options. */
@@ -25,13 +25,11 @@ declare module "preact" {
 
 /**
  * twind setup and vnode class update by tw.
- * @param options TwindConfig extended with selfURL.
+ * @param options - TwindUserConfig extended with selfURL.
  * @param sheet
  */
 export function setup(options: Options, sheet: Sheet) {
   twSetup(options, sheet);
-
-  // twSetupなしでtwするとエラー
 
   const originalHook = preactOptions.vnode;
   // deno-lint-ignore no-explicit-any
