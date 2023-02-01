@@ -1,5 +1,7 @@
 # fresh Twind(v1) Plugin
 
+[![Demo](https://img.shields.io/badge/Demo-Online-success.svg?style=for-the-badge&logo=deno)](https://y3km21-fresh-demo-twindv1.deno.dev/)
+
 fresh Twind(v1) Plugin は[Twind(v1)](https://github.com/tw-in-js/twind)を[fresh](https://github.com/denoland/fresh)で使用できるようにするプラグインです。
 
 現在、fresh には [Twind(v0.16)](https://github.com/tw-in-js/twind/tree/v0.16)を使用するための 公式プラグインが存在しますが Twind(v1)には対応していません。
