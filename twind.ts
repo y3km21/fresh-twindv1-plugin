@@ -8,10 +8,11 @@ export type { Options };
 
 /**
  * TwindPlugin
- * @param options TwindConfig extended with selfURL.
- * @returns
+ * @param options TwindUserConfig extended with selfURL.
+ * @returns FreshPlugin
  */
 export default function twind(options: Options): Plugin {
+  // Is ResumeData required ?
   const virtual_sheet = virtual();
 
   setup(options, virtual_sheet);
@@ -19,20 +20,23 @@ export default function twind(options: Options): Plugin {
   const main = `data:application/javascript,import {hydrate} from "${
     new URL("./twind/main.ts", import.meta.url).href
   }";
-import options from "${options.selfURL}";
-export default function(state) { hydrate(options, state);}`;
+  import options from "${options.selfURL}";
+  export default function(state) { hydrate(options, state);}`;
+
   return {
     name: "twind",
     entrypoints: { main: main },
     render(ctx) {
-      const _res = ctx.render();
+      const res = ctx.render();
+
       const cssTexts = [...virtual_sheet.target];
-
-      // No precedence
       const cssText = cssTexts.join("\n");
-
       const scripts = [];
-      scripts.push({ entrypoint: "main", state: cssTexts });
+
+      if (res.requiresHydration) {
+        scripts.push({ entrypoint: "main", state: cssTexts });
+      }
+
       const ret = {
         scripts,
         styles: [{ cssText: cssText, id: STYLE_ELEMENT_ID }],
