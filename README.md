@@ -35,7 +35,7 @@ You need to import Twind(v1), a minimal Twind preset (if you need more presets, 
     "twind": "https://esm.sh/@twind/core@1.1.3",
     "twind-preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7",
     "twind-preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4",
-    "twind_fresh_plugin/": "https://raw.githubusercontent.com/y3km21/fresh-twindv1-plugin/main/"
+    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2/"
   }
 }
 ```
