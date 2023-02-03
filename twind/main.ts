@@ -1,8 +1,8 @@
 // Original Code
 // https://github.com/denoland/fresh/blob/main/plugins/twind/main.ts
 //
-import { cssom, stringify, setup, Sheet, SheetRule } from "twind";
-import { STYLE_ELEMENT_ID, Options } from "./shared.ts";
+import { cssom, stringify, Sheet, SheetRule } from "twind";
+import { STYLE_ELEMENT_ID, setup, Options } from "./shared.ts";
 
 type State = string[];
 
@@ -55,7 +55,6 @@ function resume(
 ) {
   // hydration from SSR sheet
   const textContent = stringify(this.target);
-  console.log(textContent);
   const RE = /\/\*!([\da-z]+),([\da-z]+)(?:,(.+?))?\*\//g;
 
   // only if this is a hydratable sheet

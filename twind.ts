@@ -3,7 +3,7 @@
 //
 import { Plugin } from "$fresh/server.ts";
 import { STYLE_ELEMENT_ID, Options, setup } from "./twind/shared.ts";
-import { virtual } from "twind";
+import { stringify, virtual } from "twind";
 export type { Options };
 
 /**
@@ -29,8 +29,7 @@ export default function twind(options: Options): Plugin {
     render(ctx) {
       const res = ctx.render();
 
-      const cssTexts = [...virtual_sheet.target];
-      const cssText = cssTexts.join("\n");
+      const cssText = stringify(virtual_sheet.target);
       const scripts = [];
 
       if (res.requiresHydration) {
