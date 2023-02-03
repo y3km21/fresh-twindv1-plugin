@@ -13,7 +13,7 @@ export type { Options };
  */
 export default function twind(options: Options): Plugin {
   // Is ResumeData required ?
-  const virtual_sheet = virtual();
+  const virtual_sheet = virtual(true);
 
   setup(options, virtual_sheet);
 
