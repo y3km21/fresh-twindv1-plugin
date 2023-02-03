@@ -12,7 +12,6 @@ export type { Options };
  * @returns FreshPlugin
  */
 export default function twind(options: Options): Plugin {
-  // Is ResumeData required ?
   const virtual_sheet = virtual(true);
 
   setup(options, virtual_sheet);
@@ -33,9 +32,7 @@ export default function twind(options: Options): Plugin {
       const scripts = [];
 
       if (res.requiresHydration) {
-        // The filtering of cssrules in hydrate has been simplified to be done internally,
-        // so it is no longer necessary to pass virtual cssrules using 'state'.
-        scripts.push({ entrypoint: "main", state: "" });
+        scripts.push({ entrypoint: "main", state: {} });
       }
 
       const ret = {

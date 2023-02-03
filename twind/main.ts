@@ -2,7 +2,7 @@
 // https://github.com/denoland/fresh/blob/main/plugins/twind/main.ts
 //
 import { cssom, stringify, Sheet, SheetRule } from "twind";
-import { STYLE_ELEMENT_ID, setup, Options } from "./shared.ts";
+import { STYLE_ELEMENT_ID, Options, setup } from "./shared.ts";
 
 type State = string[];
 
@@ -11,43 +11,16 @@ type State = string[];
  * @param options - TwindUserConfig extended with selfURL.
  */
 export function hydrate(options: Options) {
+  // https://github.com/denoland/fresh/pull/946#issuecomment-1416191106
+
   const el = document.getElementById(STYLE_ELEMENT_ID) as HTMLStyleElement;
-  //const target = el.sheet!;
-
-  //const virtualCssSheetSet = new Set(stringify(target).split("\n"));
-
   const cssom_sheet = cssom(el);
   cssom_sheet.resume = resume.bind(cssom_sheet);
-
-  //cssom_sheet.insert = (cssText, index) => {
-  //  // https://github.com/tw-in-js/twind/blob/main/packages/core/src/sheets.ts#L61
-  //  try {
-  //    // Filter cssrule set by virtual.
-  //    // Add only the cssrule that first appears in island.
-  //    //if (!virtualCssSheetSet.has(cssText)) {
-  //    //cssom_sheet.target.insertRule(
-  //    //cssText,
-  //    //cssom_sheet.target.cssRules.length
-  //    //);
-  //    //}
-  //    target.insertRule(cssText, index);
-  //  } catch (error) {
-  //    // Empty rule to keep index valid — not using `*{}` as that would show up in all rules (DX)
-  //    cssom_sheet.target.insertRule(":root{}", index);
-
-  //    // Some thrown errors are because of specific pseudo classes
-  //    // lets filter them to prevent unnecessary warnings
-  //    // ::-moz-focus-inner
-  //    // :-moz-focusring
-  //    if (!/:-[mwo]/.test(cssText)) {
-  //      console.warn((error as Error).message, "TWIND_INVALID_CSS", cssText);
-  //    }
-  //  }
-  //};
 
   setup(options, cssom_sheet);
 }
 
+// https://github.com/tw-in-js/twind/blob/main/packages/core/src/sheets.ts#L206
 function resume(
   this: Sheet,
   addClassName: (className: string) => void,
