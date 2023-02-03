@@ -35,7 +35,9 @@ Twind(v1)、最低限の Twind プリセット（さらにプリセットが必�
     "twind": "https://esm.sh/@twind/core@1.1.1",
     "twind-preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.5",
     "twind-preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.1",
+<<<<<<< HEAD
     "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2.1/"
+=======>>>>>>> 8532ffbc605d9a312027b70fe71d7988e21c2a2e
   }
 }
 ```
