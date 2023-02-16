@@ -1,5 +1,19 @@
 {
   "deno.enable": true,
   "deno.lint": true,
-  "editor.defaultFormatter": "denoland.vscode-deno"
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  // for tailwindcss
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "on"
+  },
+  // https://github.com/tailwindlabs/tailwindcss-intellisense/issues/499
+  "tailwindCSS.experimental.classRegex": [
+    [
+      // twind.config.ts rules:[...]
+      // (?:(?:\[[\n ]*"[\w]*",\n* *")|(?:\\\n *))([\w-: ]*)
+      "(?:(?:\\[[\\n ]*\"[\\w]*\",\\n* *\")|(?:\\\\\\n *))([\\w-: ]*)",
+    ]
+  ]
 }
