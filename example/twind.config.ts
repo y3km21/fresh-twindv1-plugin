@@ -7,9 +7,6 @@ import presetTailWind from "twind-preset-tailwind";
 export default {
   ...defineConfig({
     presets: [presetAutoPrefix(), presetTailWind()],
-    theme: {
-      extend: {},
-    },
     rules: [],
   }),
   selfURL: import.meta.url,
