@@ -35,7 +35,7 @@ You need to import Twind(v1), a minimal Twind preset (if you need more presets, 
     "twind": "https://esm.sh/@twind/core@1.1.3",
     "twind-preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7",
     "twind-preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4",
-    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2.1/"
+    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2.2/"
   }
 }
 ```
@@ -43,17 +43,20 @@ You need to import Twind(v1), a minimal Twind preset (if you need more presets, 
 ### twind.config.ts
 
 Change `Options` to import from `twind_fresh_plugin/twind.ts`.
-Import the Twind preset and add it to the `presets` field of the `Options` with an array.
+And import `defineConfig` from `twind`.
+Import the Twind preset and add it to the `presets` field of the `defineConfig` argument with an array.
 
 ```ts
 import { Options } from "twind_fresh_plugin/twind.ts";
-
+import { defineConfig } from "twind";
 // twind preset
 import presetAutoPrefix from "twind-preset-autoprefix";
 import presetTailWind from "twind-preset-tailwind";
 
 export default {
-  presets: [presetAutoPrefix, presetTailWind],
+  ...defineConfig({
+    presets: [presetAutoPrefix(), presetTailWind()],
+  }),
   selfURL: import.meta.url,
 } as Options;
 ```

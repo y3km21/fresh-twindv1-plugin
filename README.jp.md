@@ -35,7 +35,7 @@ Twind(v1)、最低限の Twind プリセット（さらにプリセットが必�
     "twind": "https://esm.sh/@twind/core@1.1.1",
     "twind-preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.5",
     "twind-preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.1",
-    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2.1/"
+    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2.2/"
   }
 }
 ```
@@ -43,17 +43,20 @@ Twind(v1)、最低限の Twind プリセット（さらにプリセットが必�
 ### twind.config.ts
 
 `Options`のインポートパスを`twind_fresh_plugin/twind.ts`に変更します。
-そして使用する Twind のプリセットをインポートして `Options` の`presets`フィールドに array で追加します。
+また`defineConfig`を`twind`からインポートします。
+そして使用する Twind のプリセットをインポートして defineConfig の引数の`presets`フィールドに array で追加します。
 
 ```ts
 import { Options } from "twind_fresh_plugin/twind.ts";
-
+import { defineConfig } from "twind";
 // twind preset
 import presetAutoPrefix from "twind-preset-autoprefix";
 import presetTailWind from "twind-preset-tailwind";
 
 export default {
-  presets: [presetAutoPrefix, presetTailWind],
+  ...defineConfig({
+    presets: [presetAutoPrefix(), presetTailWind()],
+  }),
   selfURL: import.meta.url,
 } as Options;
 ```
