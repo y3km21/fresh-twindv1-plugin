@@ -26,16 +26,16 @@ You need to import Twind(v1), a minimal Twind preset (if you need more presets, 
 ```json
 {
   "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.1.2/",
-    "preact": "https://esm.sh/preact@10.11.3",
-    "preact/": "https://esm.sh/preact@10.11.3/",
-    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@5.2.6",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
+    "$fresh/": "https://deno.land/x/fresh@1.1.3/",
+    "preact": "https://esm.sh/preact@10.11.0",
+    "preact/": "https://esm.sh/preact@10.11.0/",
+    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@5.2.4",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.0.3",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.0.1",
     "twind": "https://esm.sh/@twind/core@1.1.3",
     "twind-preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7",
     "twind-preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4",
-    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.2.2/"
+    "twind_fresh_plugin/": "https://deno.land/x/fresh_twindv1_plugin@v1.3.0/"
   }
 }
 ```
